@@ -22,11 +22,8 @@ const foodPrice = document.querySelector("#price");
 const foodCate = document.querySelector("#cate");
 const foodDesc = document.querySelector("#desc");
 const sectionCenter = document.querySelector(".section-center");
-const imageInput = document
-  .querySelector("#image_input")
-  .addEventListener("change", function () {
-    console.log(this.files);
-  });
+const imageInput = document.querySelector("#image_input");
+
 const btnContainner = document.querySelector(".btn-container");
 
 // food menu array
@@ -47,14 +44,11 @@ const addItem = () => {
     price: foodPrice.value,
     category: foodCate.value,
     desc: foodDesc.value,
-    // img: uploadedImage,
+    img: uploadedImage,
   };
-  imageUpload();
   filterMenu();
   foodMenu.push(foodDetails);
-  // imageUpload();
-  // console.log(uploadedImage);
-  // console.log(foodMenu);
+  // imgUpload();
 };
 
 // display function
@@ -80,13 +74,21 @@ const displayMenu = (menu) => {
 };
 
 // upload image
-// window.addEventListener("DOMContentLoaded", imageUpload());
-// let uploadedImage = "file.name";
-// const imageUpload = () => {
-//   imageInput.addEventListener("change", function () {
-//     console.log(this.files);
-//   });
+// const imgUpload = () => {
+
 // };
+let uploadedImage = "";
+
+imageInput.addEventListener("change", function () {
+  // console.log(this.files);
+  const reader = new FileReader();
+
+  reader.addEventListener("load", () => {
+    console.log(reader.result);
+    uploadedImage = reader.result;
+  });
+  reader.readAsDataURL(this.files[0]);
+});
 
 // filtler function and display buttons
 const filterMenu = () => {
