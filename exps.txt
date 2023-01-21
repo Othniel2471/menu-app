@@ -1,0 +1,44 @@
+<div class="modal-container">
+        <form>
+          <p>please fill in this form to add food item to menu.</p>
+          <!-- <hr /> -->
+
+          <label><b>Meal Name</b></label>
+          <input
+            type="text"
+            placeholder="Enter meal name"
+            id="meal"
+            class="inputs"
+          /><br />
+
+          <label><b>Price</b></label>
+          <input
+            type="number"
+            placeholder="Enter meal price"
+            id="price"
+            class="inputs"
+          /><br />
+
+          <label><b>Category</b></label>
+          <input
+            type="text"
+            placeholder="shakes,dinner,lunch,etc."
+            id="cate"
+            class="inputs"
+          /><br />
+
+          <label><b>Description</b></label>
+          <textarea
+            name=""
+            id="desc"
+            cols="30"
+            rows="10"
+            class="inputs"
+          ></textarea>
+          <br />
+          <button class="btn" onclick="addItem()">add</button>
+        </form>
+        <button class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>

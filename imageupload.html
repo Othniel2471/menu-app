@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <input type="file" id="file-input" onchange="upload()" /> -->
+    <input type="file" id="myFileInput" />
+    <img id="imgPreview" src="" alt="preview" />
+    <script>
+      //   function upload() {
+      //     let fileInput = document.getElementById("file-input");
+      //     let file = fileInput.files[0];
+      //     let filePath = file.name;
+      //     console.log(filePath);
+      //   }
+      document
+        .querySelector("#myFileInput")
+        .addEventListener("change", function () {
+          //   console.log(this.files);
+          const reader = new FileReader();
+
+          reader.addEventListener("load", () => {
+            console.log(reader.result);
+            localStorage.setItem("recent-image", reader.result);
+          });
+          reader.readAsDataURL(this.files[0]);
+        });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const recentImageDataUrl = localStorage.getItem("recent-image");
+
+        if (recentImageDataUrl) {
+          document
+            .querySelector("#imgPreview")
+            .setAttribute("src", recentImageDataUrl);
+        }
+      });
+    </script>
+  </body>
+</html>
