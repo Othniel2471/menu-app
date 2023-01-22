@@ -222,6 +222,7 @@ form {
   flex-direction: column;
   width: 60%;
   transform: translateY(-2em);
+  height: 528px;
 }
 .inputs {
   padding: 0.5rem;
@@ -238,10 +239,10 @@ form {
   border-color: var(--clr-gold);
 }
 .submit {
-  transform: translateY(8rem);
+  transform: translateY(3rem);
 }
 .img {
-  margin-top: -1rem;
+  margin-top: -2rem;
   display: grid;
   width: 60%;
 }
@@ -358,6 +359,13 @@ Menu
   }
   .photo {
     height: 175px;
+  }
+  /* .modal-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+  } */
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
 @media screen and (min-width: 1200px) {
