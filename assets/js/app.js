@@ -67,16 +67,31 @@ const displayMenu = (menu) => {
             ${item.desc}
             </p>
           </div>
+          <div class="btn-container">
+              <!-- edit btn -->
+              <button type="button" class="edit-btn">
+                <i class="fas fa-edit"></i>
+              </button>
+              <!-- delete btn -->
+              <button type="button" class="delete-btn">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
         </article>`;
     })
     .join("");
+
+  // add event listeners to both buttons;
+  const deleteBtn = element.querySelector(".delete-btn");
+  deleteBtn.addEventListener("click", deleteItem);
+  const editBtn = element.querySelector(".edit-btn");
+  editBtn.addEventListener("click", editItem);
+
+  // display menu
   sectionCenter.innerHTML = displayMenu;
 };
 
 // upload image
-// const imgUpload = () => {
-
-// };
 let uploadedImage = "";
 
 imageInput.addEventListener("change", function () {
