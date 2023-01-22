@@ -56,53 +56,55 @@
     <!-- modal -->
     <div class="modal-overlay">
       <div class="modal-container">
-        <form>
-          <p>please fill in this form to add food item to menu.</p>
-          <!-- <hr /> -->
+        <div class="form-container">
+          <form>
+            <p>please fill in this form to add food item to menu.</p>
+            <!-- <hr /> -->
 
-          <label><b>Meal Name</b></label>
-          <input
-            type="text"
-            placeholder="Enter meal name"
-            id="meal"
-            class="inputs"
-          /><br />
+            <label><b>Meal Name</b></label>
+            <input
+              type="text"
+              placeholder="Enter meal name"
+              id="meal"
+              class="inputs"
+            /><br />
 
-          <label><b>Price</b></label>
-          <input
-            type="number"
-            placeholder="Enter meal price"
-            id="price"
-            class="inputs"
-          /><br />
+            <label><b>Price</b></label>
+            <input
+              type="number"
+              placeholder="Enter meal price"
+              id="price"
+              class="inputs"
+            /><br />
 
-          <label><b>Category</b></label>
-          <input
-            type="text"
-            placeholder="shakes,dinner,lunch,etc."
-            id="cate"
-            class="inputs"
-          /><br />
+            <label><b>Category</b></label>
+            <input
+              type="text"
+              placeholder="shakes,dinner,lunch,etc."
+              id="cate"
+              class="inputs"
+            /><br />
 
-          <label><b>Description</b></label>
-          <textarea
-            name=""
-            id="desc"
-            cols="10"
-            rows="10"
-            class="inputs"
-          ></textarea>
-          <br />
-          <button class="btn submit" onclick="displayItem()">add</button>
-        </form>
-        <div class="img">
-          <label><b>Image</b></label>
-          <input
-            type="file"
-            id="image_input"
-            class="inputs"
-            accept="image/png image/jpg"
-          /><br />
+            <label><b>Description</b></label>
+            <textarea
+              name=""
+              id="desc"
+              cols="10"
+              rows="10"
+              class="inputs"
+            ></textarea>
+            <br />
+            <button class="btn submit" onclick="displayItem()">add</button>
+          </form>
+          <div class="img">
+            <label><b>Image</b></label>
+            <input
+              type="file"
+              id="image_input"
+              class="inputs"
+              accept="image/png image/jpg"
+            /><br />
+          </div>
         </div>
         <button class="close-btn">
           <i class="fas fa-times"></i>

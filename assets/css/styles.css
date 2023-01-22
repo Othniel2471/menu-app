@@ -217,10 +217,16 @@ Modal
   transform: scale(1.3);
 }
 
+.form-container {
+  display: grid;
+  place-items: center;
+  width: 80%;
+}
+
 form {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  /* width: 60%; */
   transform: translateY(-2em);
   height: 528px;
 }
@@ -244,7 +250,7 @@ form {
 .img {
   margin-top: -2rem;
   display: grid;
-  width: 60%;
+  /* width: 60%; */
 }
 
 /*
