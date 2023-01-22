@@ -33,6 +33,7 @@ const foodMenu = [];
 const displayItem = () => {
   addItem();
   clearFields();
+  filterMenu();
   displayMenu(foodMenu);
   overlay.classList.remove("open-modal");
 };
@@ -56,7 +57,8 @@ const displayMenu = (menu) => {
   let displayMenu = menu
     .map((item) => {
       // console.log("chief");
-      return `<article class="menu-item">
+
+      return `<article class="menu-item" data-category="${item.category}">
           <img src="${item.img}" class="photo" alt="menu-item" />
           <div class="item-info">
             <header>
@@ -81,15 +83,27 @@ const displayMenu = (menu) => {
     })
     .join("");
 
-  // add event listeners to both buttons;
-  const deleteBtn = element.querySelector(".delete-btn");
-  deleteBtn.addEventListener("click", deleteItem);
-  const editBtn = element.querySelector(".edit-btn");
-  editBtn.addEventListener("click", editItem);
-
   // display menu
   sectionCenter.innerHTML = displayMenu;
+
+  const elements = document.querySelectorAll(".menu-item");
+  elements.forEach((element) => {
+    const deleteBtn = element.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", deleteItem);
+    // const editBtn = element.querySelector(".edit-btn");
+    // editBtn.addEventListener("click", editItem);
+  });
 };
+
+// delete function
+const deleteItem = (e) => {
+  const element = e.target.closest(".menu-item");
+  const index = Array.from(sectionCenter.children).indexOf(element);
+  foodMenu.splice(index, 1);
+  displayMenu(foodMenu);
+};
+
+// edit function
 
 // upload image
 let uploadedImage = "";
@@ -118,27 +132,22 @@ const filterMenu = () => {
   );
   const categoryBtns = categories
     .map((category) => {
-      return `<button class="filter-btn" type="button" data-id="${category}">${category}</button>`;
+      return `<button type="button" class="filter-btn" data-category="${category}">${category}</button>`;
     })
     .join("");
   btnContainner.innerHTML = categoryBtns;
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  // filter items
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      // console.log(e.currentTarget.dataset.id);
-      let category = e.currentTarget.dataset.id;
-      const menuCategory = foodMenu.filter((item) => {
-        if (item.category === category) {
-          return item;
-        }
-      });
+  btnContainner.addEventListener("click", (e) => {
+    if (e.target.classList.contains("filter-btn")) {
+      const category = e.target.getAttribute("data-category");
       if (category === "all") {
         displayMenu(foodMenu);
       } else {
-        displayMenu(menuCategory);
+        const filteredMenu = foodMenu.filter(
+          (item) => item.category === category
+        );
+        displayMenu(filteredMenu);
       }
-    });
+    }
   });
 };
 
