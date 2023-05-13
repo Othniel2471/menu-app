@@ -67,6 +67,9 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 body {
   font-family: var(--ff-secondary);
   background: var(--clr-grey-10);
@@ -184,6 +187,8 @@ Modal
   transition: var(--transition);
   visibility: hidden;
   z-index: -10;
+  overflow-y: scroll;
+  padding: 5.5% 0%;
 }
 /* OPEN/CLOSE MODAL */
 .open-modal {

@@ -8,9 +8,10 @@ btn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   overlay.classList.remove("open-modal");
 });
-// overlay.addEventListener("click", () => {
-//   overlay.classList.remove("open-modal");
-// });
+window.addEventListener('click',(e)=>{
+  if(e.target == overlay){
+      overlay.classList.remove('open-modal')
+  }})
 
 // menu inputs
 const form = document.querySelector("form").addEventListener("click", (e) => {
@@ -90,8 +91,8 @@ const displayMenu = (menu) => {
   elements.forEach((element) => {
     const deleteBtn = element.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", deleteItem);
-    // const editBtn = element.querySelector(".edit-btn");
-    // editBtn.addEventListener("click", editItem);
+    const editBtn = element.querySelector(".edit-btn");
+    editBtn.addEventListener("click", editItem);
   });
 };
 
@@ -104,6 +105,34 @@ const deleteItem = (e) => {
 };
 
 // edit function
+let index;
+const editItem = (e) => {
+  const element = e.target.closest(".menu-item");
+  index = Array.from(sectionCenter.children).indexOf(element);
+  const currentItem = foodMenu[index];
+  foodName.value = currentItem.name;
+  foodPrice.value = currentItem.price;
+  foodCate.value = currentItem.category;
+  foodDesc.value = currentItem.desc;
+  uploadedImage = currentItem.img;
+  overlay.classList.add("open-modal");
+};
+
+const updateItem = (e) => {
+  e.preventDefault();
+  const updatedItem = {
+    name: foodName.value,
+    price: foodPrice.value,
+    category: foodCate.value,
+    desc: foodDesc.value,
+    img: uploadedImage,
+  };
+  foodMenu[index] = updatedItem;
+  displayMenu(foodMenu);
+  overlay.classList.remove("open-modal");
+  form.removeEventListener("submit", updateItem);
+  form.addEventListener("submit", displayItem);
+};
 
 // upload image
 let uploadedImage = "";
